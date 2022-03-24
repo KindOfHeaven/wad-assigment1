@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assigment 1 | Uploading</title>
+</head>
+<body>
+    <a href="/" style="margin: 30px 0; text-decoration: underline;">Home</a>
+    <h1>Hello, {{ username }}!</h1>
+    <p>Here you can upload your files. Only png/jpg/svg are available!</p>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li style="color: red">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input required type="file" name="file" placeholder="Upload your file" accept=".jpg,.jpeg,.png,.svg">
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
